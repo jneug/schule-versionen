@@ -69,9 +69,29 @@ public class SuchmaschineTest {
                 s.binaereSuche(i, sortiertesArray));
         }
         assertFalse("1 ist nicht im Array, wurde aber gefunden!",
-            s.lineareSuche(1, sortiertesArray));
+            s.binaereSuche(1, sortiertesArray));
         assertFalse("58 ist nicht im Array, wurde aber gefunden!",
-            s.lineareSuche(58, sortiertesArray));
+            s.binaereSuche(58, sortiertesArray));
+
+        // Randbedingungen prüfen
+        for( int i = 10; i >= 1; i-- ) {
+            int[] arr = new int[i];
+            for( int j = 1; j <= i; j++ ) {
+                arr[j-1] = j;
+            }
+            assertTrue("1 in 1.."+i, s.binaereSuche(1, arr));
+        }
+        assertFalse("1 in {}", s.binaereSuche(1, new int[]{}));
+
+        assertTrue(s.binaereSuche(10, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
+        for( int i = 9; i >= 1; i-- ) {
+            int[] arr = new int[i];
+            for( int j = 1; j <= i; j++ ) {
+                arr[j-1] = j;
+            }
+            assertFalse("10 in 1.."+i, s.binaereSuche(10, arr));
+        }
+        assertFalse("10 in {}", s.binaereSuche(10, new int[]{1}));
     }
 
 }

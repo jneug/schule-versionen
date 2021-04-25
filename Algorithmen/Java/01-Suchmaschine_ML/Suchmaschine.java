@@ -44,18 +44,18 @@ public class Suchmaschine {
      * <code>sucharray</code> aufsteigend vorsortiert sein.
      */
     public boolean binaereSuche( int suchzahl, int[] sucharray ) {
-        int left = 0, right = sucharray.length;
-        while( left < right ) {
+        int left = 0, right = sucharray.length-1;
+        while( left <= right ) {
             int mid = (int) ((left+right)/2);
             if( sucharray[mid] == suchzahl ) {
                 return true;
             } else if( sucharray[mid] < suchzahl ) {
-                left = mid;
+                left = mid+1;
             } else {
-                right = mid;
+                right = mid-1;
             }
         }
-        return sucharray[left] == suchzahl;
+        return false;
     }
 
 }
