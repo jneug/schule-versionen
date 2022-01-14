@@ -15,9 +15,6 @@ public class ListDojo {
      * @return Die Liste mit aufsteigenden Zahlen
      */
     public List<Integer> ascendingList( int pMax ) {
-        /*afg*
-        return null;
-        *afg*/
         List<Integer> list = new List<>();
         for( int i = 1; i <= pMax; i++ ) {
             list.append(i);
@@ -41,9 +38,6 @@ public class ListDojo {
     public List<Integer> randomList( int pCount, int pMin, int pMax ) {
         Random zufall = new Random();
 
-        /*afg*
-        return null;
-        *afg*/
         List<Integer> list = new List<>();
         for( int i = 0; i < pCount; i++ ) {
             list.append(zufall.nextInt(pMax - pMin + 1) + pMin);
@@ -89,9 +83,6 @@ public class ListDojo {
      * @return Ob der Wert gefunden wurde
      */
     public boolean searchInList( List<Integer> pList, int pValue ) {
-        /*afg*
-        return false;
-        *afg*/
         pList.toFirst();
         while( pList.hasAccess() ) {
             if( pValue == pList.getContent().intValue() ) {
@@ -113,9 +104,6 @@ public class ListDojo {
         int min = Integer.MAX_VALUE;
 
         // Suche das Minimum aus der Liste
-        /*afg*
-        return min;
-        *afg*/
         pList.toFirst();
         while( pList.hasAccess() ) {
             if( pList.getContent().intValue() < min ) {
@@ -216,9 +204,6 @@ public class ListDojo {
      * @return Das Pokemon-Objekt
      */
     public Pokemon searchInList( List<Pokemon> pList, String pName ) {
-        /*afg*
-        return null;
-        *afg*/
         pList.toFirst();
         while( pList.hasAccess() ) {
             if( pName.equals(pList.getContent().getName()) ) {
