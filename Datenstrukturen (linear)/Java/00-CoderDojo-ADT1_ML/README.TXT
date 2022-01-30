@@ -9,7 +9,7 @@ Material zum Abitur NRW.
 
 
 Im Kommentar jeder Methode steht eine Beschreibung des Problems, dass in der
-Methode gelöst werden soll. Die Klasse {@link ListDojoTest} enthält
+Methode gelöst werden soll. Die Klasse _ListDojoTest_ enthält
 Testmethoden, die prüfen, ob die Methode korrekt implementiert wurde. Die
 Tests können in BlueJ mit einem Rechtsklick auf die Testklasse gestartet
 werden.
