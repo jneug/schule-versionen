@@ -12,9 +12,10 @@
  * haben eine konstante Laufzeit, unabhaengig von der Anzahl der verwalteten
  * Objekte.
  * </p>
- * 
+ *
  * @author Qualitaets- und UnterstuetzungsAgentur - Landesinstitut fuer Schule
  * @version Generisch_02 2014-02-21
+ * @param <ContentType>
  */
 public class Stack<ContentType> {
 
@@ -28,7 +29,7 @@ public class Stack<ContentType> {
     /**
      * Ein neues Objekt vom Typ StackNode<ContentType> wird erschaffen. <br />
      * Der Inhalt wird per Parameter gesetzt. Der Verweis ist leer.
-     * 
+     *
      * @param pContent der Inhalt des Knotens
      */
     public StackNode(ContentType pContent) {
@@ -39,7 +40,7 @@ public class Stack<ContentType> {
     /**
      * Der Verweis wird auf das Objekt, das als Parameter uebergeben wird,
      * gesetzt.
-     * 
+     *
      * @param pNext der Nachfolger des Knotens
      */
     public void setNext(StackNode pNext) {
@@ -47,7 +48,7 @@ public class Stack<ContentType> {
     }
 
     /**
-     * 
+     *
      * @return das Objekt, auf das der aktuelle Verweis zeigt
      */
     public StackNode getNext() {
@@ -77,7 +78,7 @@ public class Stack<ContentType> {
   /**
    * Die Anfrage liefert den Wert true, wenn der Stapel keine Objekte
    * enthaelt, sonst liefert sie den Wert false.
-   * 
+   *
    * @return true, falls der Stapel leer ist, sonst false
    */
   public boolean isEmpty() {
@@ -87,8 +88,8 @@ public class Stack<ContentType> {
   /**
    * Das Objekt pContentType wird oben auf den Stapel gelegt. Falls
    * pContentType gleich null ist, bleibt der Stapel unveraendert.
-   * 
-   * @param pContent 
+   *
+   * @param pContent
    *        das einzufuegende Objekt vom Typ ContentType
    */
   public void push(ContentType pContent) {
@@ -112,7 +113,7 @@ public class Stack<ContentType> {
   /**
    * Die Anfrage liefert das oberste Stapelobjekt. Der Stapel bleibt
    * unveraendert. Falls der Stapel leer ist, wird null zurueckgegeben.
-   * 
+   *
    * @return das oberste Stackelement vom Typ ContentType oder null, falls
    *         der Stack leer ist
    */
