@@ -7,10 +7,6 @@ public class ChinookDB {
 
     private List<Playlist> playlists;
 
-    public static void main(String[] args) {
-        ChinookDB cdb = new ChinookDB();
-        cdb.printStats();
-    }
 
     public ChinookDB() {
         // Verbindung zur SQLite DB aufbauen.
@@ -105,17 +101,17 @@ public class ChinookDB {
     }
 
     /**
-     * Lädt die Playlist mit der angegbeen {@var pPlaylistID} inklusive aller
+     * Lädt die Playlist mit der angegebenen {@var pPlaylistID} inklusive aller
      * zugehörigen {@link Track}s aus der Datenbank und gibt das
      * {@link Playlist}-Objekt zurück. Gab es bei der Verbindung einen
-     * Fehler oder gibt es keinen Playlist mit der passenden ID, dann wird
+     * Fehler oder gibt es keine Playlist mit der passenden ID, dann wird
      * {@code null} zurückgegeben.
      * @param pPlaylistID Die ID der zu ladenden Playlist.
      * @return Die geladene Playlist.
      */
     public Playlist loadPlaylist( int pPlaylistID ) {
         // TODO: Implementieren
-        return null
+        return null;
     }
 
     /**
@@ -123,7 +119,6 @@ public class ChinookDB {
      */
     public void loadPlaylists() {
         // TODO: Implementieren
-        return null
     }
 
 }

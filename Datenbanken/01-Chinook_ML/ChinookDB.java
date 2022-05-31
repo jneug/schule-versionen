@@ -105,22 +105,70 @@ public class ChinookDB {
     }
 
     /**
-     * Lädt die Playlist mit der angegbeen {@var pPlaylistID} inklusive aller
+     * Lädt die Playlist mit der angegebenen {@var pPlaylistID} inklusive aller
      * zugehörigen {@link Track}s aus der Datenbank und gibt das
      * {@link Playlist}-Objekt zurück. Gab es bei der Verbindung einen
-     * Fehler oder gibt es keinen Playlist mit der passenden ID, dann wird
+     * Fehler oder gibt es keine Playlist mit der passenden ID, dann wird
      * {@code null} zurückgegeben.
      * @param pPlaylistID Die ID der zu ladenden Playlist.
      * @return Die geladene Playlist.
      */
     public Playlist loadPlaylist( int pPlaylistID ) {
-        return null;
+        // Datenbankabfrage ausführen und Result holen
+        dbc.executeStatement("SELECT Name FROM playlists WHERE PLaylistId = " + pPlaylistID);
+        QueryResult pl_result = dbc.getCurrentQueryResult();
+        // Auf Fehler prüfen
+        if( pl_result != null && pl_result.getRowCount() > 0 ) {
+            String[][] data = pl_result.getData();
+            String name = data[0][0];
+
+            Playlist pl = new Playlist(pPlaylistID, name);
+
+            // Zwei Varianten möglich:
+            // 1. Pro Track eine DB-Query stellen.
+            // 2. Alle Tracks in einer Abfrage abfragen.
+
+            // Möglichkeit 2:
+            dbc.executeStatement("SELECT tracks.TrackId,tracks.Name,tracks.Milliseconds,tracks.Bytes,tracks.UnitPrice FROM tracks JOIN playlist_track plt ON tracks.TrackId = plt.TrackId WHERE plt.PlaylistId = " + pPlaylistID);
+            QueryResult tracks_result = dbc.getCurrentQueryResult();
+            // Auf Fehler prüfen
+            if( tracks_result != null && pl_result.getRowCount() > 0 ) {
+                String track_data[][] = tracks_result.getData();
+                for( int i = 0; i < track_data.length; i++ ) {
+                    int id = Integer.parseInt(track_data[0][0]);
+                    String track_name = track_data[0][1];
+                    long milliseconds = Long.parseLong(track_data[0][2]);
+                    long bytes = Long.parseLong(track_data[0][3]);
+                    double unitPrice = Double.parseDouble(track_data[0][4]);
+                    // Track-Objekt erstellen.
+                    Track track = new Track(id, track_name, milliseconds, bytes, unitPrice);
+                    pl.addTrack(track);
+                }
+            }
+
+            return pl;
+        } else {
+            // Fehler! null zurückgeben.
+            return null;
+        }
     }
 
     /**
      * Lädt alle vorhandenen Playlists in die Liste {@var playlists}.
      */
     public void loadPlaylists() {
+        dbc.executeStatement("SELECT PlaylistId FROM playlists");
+        QueryResult pl_result = dbc.getCurrentQueryResult();
+        // Auf Fehler prüfen
+        if( pl_result != null ) {
+            String[][] data = pl_result.getData();
+            for( int i = 0; i < data.length; i++ ) {
+                Playlist pl = loadPlaylist(Integer.parseInt(data[i][0]));
+                if( pl != null ) {
+                    playlists.append(pl);
+                }
+            }
+        }
     }
 
 }
