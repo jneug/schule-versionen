@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"<Unnamed>","l":"AdtDojo"},{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"ArrayDojo"},{"p":"<Unnamed>","l":"ArrayDojoTest"},{"p":"<Unnamed>","l":"Dice"},{"p":"<Unnamed>","l":"Pokemon"},{"p":"<Unnamed>","l":"Queue"},{"p":"<Unnamed>","l":"Stack"}];updateSearchResults();
