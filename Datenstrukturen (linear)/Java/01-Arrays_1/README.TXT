@@ -1,0 +1,3 @@
+# ArrayDojo
+
+Übungsprojekt zu ArrayDojo.
